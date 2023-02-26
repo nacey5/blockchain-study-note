@@ -29,3 +29,7 @@ EVM ( Ethereum Virtual Machine 以太坊虚拟机）、矿工、区块、交易�
 ## 创世区块
 这个区块是在链初次发起时·自动创建的 你也可以这样认为，整个链条是由创世区块（通过 genesis json文件来生成）作为第一个区块而开始启动的。
 这个概念很重要，因为手动编写智能合约之后，需要由合约创建创世区块。
+
+## 区块头和它的组成部分
+![image](https://user-images.githubusercontent.com/85286598/221400382-d10c914e-a06d-4754-9b73-99094fa1cd67.png)
+
