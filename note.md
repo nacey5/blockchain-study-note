@@ -33,3 +33,61 @@ EVM ( Ethereum Virtual Machine 以太坊虚拟机）、矿工、区块、交易�
 ## 区块头和它的组成部分
 ![image](https://user-images.githubusercontent.com/85286598/221400382-d10c914e-a06d-4754-9b73-99094fa1cd67.png)
 
+
+## 初始化--命令
+~~~shell
+#路径
+export GETHROOT=/opt/git/go-ethereum
+export PATH=$PATH:$GETHROOT/build/bin
+#初始化
+geth init ".\genesis.json" --datadir ".\chaindata"
+#开启服务
+geth --datadir "/root/geth-code/chaindata" --rpc --rpcaddr "0.0.0.0" --rpcapi "eth,web3,miner,admin,personal,net" --rpccorsdomain "*" --nodiscover --networkid 15
+#ipc客户端登录
+geth attach geth.ipc
+
+ps -ef | grep -i geth
+~~~
+
+## 创世区块
+这个区块是在链初次发起时·自动创建的 你也可以这样认为，整个链条是由创世区块（通过 genesis json文件来生成）作为第一个区块而开始启动的。
+这个概念很重要，因为手动编写智能合约之后，需要由合约创建创世区块。
+
+~~~ json
+{
+"config":{
+"chainId":15,
+"homesteadBlock": 0,
+"eip155Block": 0,
+"eip158Block":0
+},
+"nonce":"0x0000000000000042",
+"mixhash":"0X0000000000000000000000000000000000000000000000000000000000000000
+",
+"difficulty":"0x200",
+"alloc":{},
+"coinbase":"0x0000000000000000000000000000000000000000",
+"timestamp":"0x00",
+"parentHash":
+"0x000000000000000000000000000000000000000000000000000000000000000",
+"gasLimit":"0xffffffff",
+"alloc":{
+}
+}
+~~~
+
+## 创建账户
+personal.newAccount()
+
+## 安装Solidity编译器
+npm install -g solc
+
+## 安装web3
+npm install web3@0.19
+
+## 连接以太坊
+-在node模式下，输入以下命令可以连接到以太坊
+~~~ solidity
+var Web=require('web3')
+var web=new Web(Web.providers.HttpProvider('http://localhost:8545'))
+~~~
